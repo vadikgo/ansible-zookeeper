@@ -10,14 +10,11 @@
 - name: Download and unpack zookeeper
   unarchive:
     src: "{{zookeeper_url}}"
-    dest: "{{zookeeper_dir}}"
+    dest: "{{zookeeper_base_dir}}"
     copy: no
     owner: zookeeper
     group: zookeeper
     creates: "{{zookeeper_dir}}/bin"
-
-- name: Change ownership on zookeeper directory.
-  file: path={{zookeeper_dir}} state=directory owner=zookeeper group=zookeeper recurse=yes
   tags: bootstrap
 
 - name: Create zookeeper data folder.
