@@ -13,7 +13,7 @@ zoo_id: 1
 data_dir: /var/lib/zookeeper
 log_dir: /var/log/zookeeper
 zookeeper_base_dir: /opt
-zookeeper_dir: /{{zookeeper_base_dir}}/zookeeper-{{zookeeper_version}}
+zookeeper_dir: "{{zookeeper_base_dir}}/zookeeper-{{zookeeper_version}}"
 
 # List of dict (i.e. {zookeeper_hosts:[{host:,id:},{host:,id:},...]})
 zookeeper_hosts:
