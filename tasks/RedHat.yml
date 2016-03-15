@@ -62,3 +62,7 @@
 - name: Start zookeeper
   service: name=zookeeper state=started
   tags: deploy
+
+- name: wait for zookeeper port
+  wait_for: port={{client_port}} state=started timeout={{ zookeeper_wait_for_period }}
+  #when: deploy

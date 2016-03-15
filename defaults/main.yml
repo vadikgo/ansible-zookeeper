@@ -9,11 +9,11 @@ client_port: 2181
 init_limit: 5
 sync_limit: 2
 tick_time: 2000
-zoo_id: 1
 data_dir: /var/lib/zookeeper
 log_dir: /var/log/zookeeper
 zookeeper_base_dir: /opt
 zookeeper_dir: "{{zookeeper_base_dir}}/zookeeper-{{zookeeper_version}}"
+zookeeper_wait_for_period: 120
 
 # List of dict (i.e. {zookeeper_hosts:[{host:,id:},{host:,id:},...]})
 zookeeper_hosts:
