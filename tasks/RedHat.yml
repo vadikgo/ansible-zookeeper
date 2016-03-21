@@ -11,7 +11,7 @@
   unarchive:
     src: "{{zookeeper_url}}"
     dest: "{{zookeeper_base_dir}}"
-    copy: no
+    copy: "{{zookeeper_url | match('https*://.*') | ternary(False, True)}}"
     owner: zookeeper
     group: zookeeper
     creates: "{{zookeeper_dir}}/bin"
