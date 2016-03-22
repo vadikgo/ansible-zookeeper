@@ -1,1 +1,1 @@
-{% for host in zookeeper_hosts %}{{ host['id'] if host['host'] in [ansible_hostname] + ansible_all_ipv4_addresses  else '' }}{% endfor %}
+{% for host in zookeeper_hosts %}{{ loop.index if host in [ansible_hostname] + ansible_all_ipv4_addresses  else '' }}{% endfor %}

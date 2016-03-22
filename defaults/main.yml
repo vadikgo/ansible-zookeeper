@@ -3,7 +3,6 @@ ansible_playbook_version: 0.1
 zookeeper_playbook_version: "0.9.1.1"
 zookeeper_version: 3.4.6
 zookeeper_url: http://www.us.apache.org/dist/zookeeper/zookeeper-{{zookeeper_version}}/zookeeper-{{zookeeper_version}}.tar.gz
-
 apt_cache_timeout: 3600
 client_port: 2181
 init_limit: 5
@@ -15,7 +14,6 @@ zookeeper_base_dir: /opt
 zookeeper_dir: "{{zookeeper_base_dir}}/zookeeper-{{zookeeper_version}}"
 zookeeper_wait_for_period: 120
 
-# List of dict (i.e. {zookeeper_hosts:[{host:,id:},{host:,id:},...]})
+# List (i.e. {zookeeper_hosts:[host,host,...]})
 zookeeper_hosts:
-  - host: "{{ansible_hostname}}" # the machine running
-    id: 1
+    - "{{ansible_hostname}}"
