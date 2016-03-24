@@ -3,6 +3,7 @@
   yum: name={{ item }} state=present
   with_items:
     - libselinux-python
+    - nc
 
 - group: name=zookeeper system=yes
 - user: name=zookeeper group=zookeeper system=yes
@@ -66,3 +67,8 @@
 - name: wait for zookeeper port
   wait_for: port={{client_port}} state=started timeout={{ zookeeper_wait_for_period }}
   #when: deploy
+
+- name: Is the ZK running in a non-error state
+  shell: echo ruok | nc localhost {{client_port}}
+  register: zk_ruok
+  failed_when: zk_ruok.stdout.find('imok') == -1
