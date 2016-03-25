@@ -5,6 +5,13 @@ clientPort={{ client_port }}
 initLimit={{ init_limit }}
 syncLimit={{ sync_limit }}
 
+# Auto purge feature keeps this ammount of most recent snapshots
+# and the corresponding transaction logs
+autopurge.snapRetainCount = 5
+
+# The time interval in hours for which the purge task has to be triggered
+autopurge.purgeInterval = 3
+
 {% for server in zookeeper_hosts %}
 server.{{loop.index}}={{server}}:2888:3888
 {% endfor %}
