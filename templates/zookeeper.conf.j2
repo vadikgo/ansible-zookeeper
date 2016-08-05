@@ -13,10 +13,13 @@ umask 007
 kill timeout 300
 
 script
-    su -c "{{zookeeper_dir}}/bin/zkServer.sh start-foreground > /var/log/zookeeper/init-zookeeper.log" zookeeper
+    su -c "{{zookeeper_dir}}/bin/zkServer.sh start-foreground > {{zookeeper_log_dir}}/init-zookeeper.log" zookeeper
 end script
 
 post-stop script
     pid=$(ps ax|grep zookeeper-{{zookeeper_version}}|grep java|awk '{print $1}')
     [ -n $pid ] && kill $pid
+    sleep 10
+    pid9=$(ps ax|grep zookeeper-{{zookeeper_version}}|grep java|awk '{print $1}')
+    [ -n $pid9 ] && kill -9 $pid9
 end script

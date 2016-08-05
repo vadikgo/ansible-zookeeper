@@ -1,3 +1,4 @@
 ---
 - name: Restart zookeeper
   service: name=zookeeper state=restarted sleep=10
+  when: ansible_connection != 'docker'
